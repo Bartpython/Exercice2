@@ -1,0 +1,6 @@
+{
+  "/register": "/users",
+  "/login": "/login",
+  "/projects*": "/660/projects$1",
+  "/tasks*": "/660/tasks$1"
+}

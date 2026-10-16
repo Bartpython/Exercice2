@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "email": "test@test.fr",
+      "password": "$2a$10$ACUjiecksly3A71G17tKHOWIigwyYWz6uZuo36NFjftYNaxbyedt.",
+      "name": "test",
+      "id": 1
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Projet Alpha",
+      "description": "Application interne de gestion RH",
+      "userId": 1
+    },
+    {
+      "title": "Mon super projet",
+      "description": "La description de mon projet",
+      "id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "projectId": 1,
+      "title": "Créer la base de données",
+      "description": "Mettre en place les tables principales",
+      "status": "en cours"
+    },
+    {
+      "title": "Mettre en place l'auth",
+      "description": "Connexion JWT",
+      "status": "en cours",
+      "projectId": "1",
+      "id": 2
+    },
+    {
+      "title": "Ma tâche",
+      "description": "description",
+      "status": "en cours",
+      "projectId": "1",
+      "id": 3
+    },
+    {
+      "title": "Ma tâche terminée",
+      "description": "RAS",
+      "status": "terminée",
+      "projectId": "1",
+      "id": 5
+    }
+  ]
+}
