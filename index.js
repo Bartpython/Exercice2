@@ -4,7 +4,7 @@ const password = document.querySelector('#password'); // Sélection du champ de 
 const error = document.querySelector('#error'); // Sélection de l'élément d'affichage des erreurs par son ID
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
-    fetch('http://localhost:3000/login', {
+    fetch('http://localhost:3000/Documents/Projet/routes.json', {
         method: 'POST',  // Méthode POST utilisée pour envoyer les données au serveur
         headers: {   // En-têtes pour indiquer le type de contenu
             'Content-Type': 'application/json'  // contenu envoyé est au format JSON

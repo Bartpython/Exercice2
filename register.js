@@ -8,7 +8,7 @@ form.addEventListener('submit', function(event) {
     event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
 
     if(nameinput.value.length < 3) {
-        fetch('http://localhost:3000/register', {  // Fetch appel l'API pour enregistrer un nouvel utilisateur
+        fetch('http://localhost:3000/Documents/Projet/routes.json/resister', {  // Fetch appel l'API pour enregistrer un nouvel utilisateur
             method: 'POST',  // Méthode POST utilisée pour envoyer les données au serveur
             headers: {   // En-têtes pour indiquer le type de contenu
                 'Content-Type': 'application/json'  // contenu envoyé est au format JSON
