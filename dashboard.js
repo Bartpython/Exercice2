@@ -2,6 +2,8 @@ const token = localStorage.getItem('accessToken');
 if (!token) {
     window.location.href = 'index.html';
 }
+const projects = document.querySelector('#projects');
+
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', function() {
     localStorage.removeItem('accessToken');
@@ -15,8 +17,23 @@ fetch('http://localhost:3000/projects', {
 })
 .then(response => response.json())
 .then(data => {
-    console.log(data);
-})
-.catch(error => {
-    console.error('Error:', error);
+data.forEach(projet => {
+    
+    const projectCard = document.createElement('div');
+    projectCard.classList.add('project-card');
+    projects.appendChild(projectCard);
+
+    const h3 = document.createElement('h3');
+    h3.textContent = projet.title;
+    projectCard.appendChild(h3);
+
+    const p = document.createElement('p');
+    p.textContent = projet.description;
+    projectCard.appendChild(p);
+
+    const a = document.createElement('a');
+    a.textContent = 'Voir le projet';
+    a.href = projet.html;
+    projectCard.appendChild(a);
+    });
 });
