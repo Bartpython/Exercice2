@@ -1,7 +1,3 @@
-const token = localStorage.getItem('accessToken');
-if (!token) {
-    window.location.href = 'index.html';
-}
 const projects = document.querySelector('.projects');
 
 const logout = document.querySelector('#logout');
