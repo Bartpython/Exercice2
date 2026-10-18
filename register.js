@@ -14,9 +14,9 @@ registerForm.addEventListener('submit', function(event) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "#name": nameInput.value,
-                "#email": email.value,
-                "#password": password.value
+                "name": nameInput.value,
+                "email": email.value,
+                "password": password.value
             })
         })
         .then(response => response.json())
