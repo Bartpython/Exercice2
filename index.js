@@ -20,6 +20,7 @@ loginForm.addEventListener('submit', function(event) {
         .then(data => {
             console.log(data);
             if (data.accessToken) {
+                localStorage.setItem('accessToken', data.accessToken);
                 window.location.href = 'dashboard.html';
             }
             else {
