@@ -2,7 +2,7 @@ const token = localStorage.getItem('accessToken');
 if (!token) {
     window.location.href = 'index.html';
 }
-const projects = document.querySelector('#projects');
+const projects = document.querySelector('.projects');
 
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', function() {
@@ -18,7 +18,7 @@ fetch('http://localhost:3000/projects', {
 .then(response => response.json())
 .then(data => {
 data.forEach(projet => {
-    
+
     const projectCard = document.createElement('div');
     projectCard.classList.add('project-card');
     projects.appendChild(projectCard);
