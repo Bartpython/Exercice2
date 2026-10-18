@@ -18,12 +18,12 @@ projectForm.addEventListener('submit', function(event) {
         })
     })
     .then(response => response.json())
-    .then(data => {
-        if (data.error) {
-            error.textContent = data.error;
+    .then(project => {
+        if (project.error) {
+            error.textContent = project.error;
         } else {
-            console.log(data);
-            window.location.href = 'project.html';
+            console.log(project);
+            window.location.href = 'project.html?id=' + project.id;
         }
     });
 });

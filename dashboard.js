@@ -29,7 +29,7 @@ data.forEach(projet => {
 
     const a = document.createElement('a');
     a.textContent = 'Voir le projet';
-    a.href = projet.html;
+    a.href = 'project.html?id=' + projet.id;
     projectCard.appendChild(a);
     });
 });
