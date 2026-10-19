@@ -28,7 +28,6 @@ function getData() {  // Crée une fonction getData qui récupère et affiche le
     
     .then(response => response.json())
     .then(project => {
-        taskList.innerHTML = ''; // Vide la liste des tâches avant de les recharger
         console.log(project);
         
 
@@ -53,6 +52,7 @@ function getData() {  // Crée une fonction getData qui récupère et affiche le
         .then(response => response.json())
         .then(tasks => {
             console.log(tasks);
+            taskList.innerHTML = ''; // Vide la liste des tâches avant de les recharger
             tasks.forEach(task => {
 
                 const taskItem = document.createElement('div');
@@ -78,6 +78,7 @@ function getData() {  // Crée une fonction getData qui récupère et affiche le
                 const taskAction = document.createElement('div');
                 taskAction.classList.add('task-action');
                 taskItem.appendChild(taskAction);
+                taskList.appendChild(taskItem);
 
                 const editButton = document.createElement('button');
                 editButton.classList.add('edit-button');
@@ -99,9 +100,19 @@ function getData() {  // Crée une fonction getData qui récupère et affiche le
                 taskAction.appendChild(deleteButton);
                 deleteButton.addEventListener('click', function() {  // Événement pour supprimer la tâche
                     console.log('Delete task:', task);
+                    const confirDelete = confirm('Êtes-vous sûr de vouloir supprimer cette tâche ?');
+                    if (!confirDelete) return;
+                    fetch(`http://localhost:3000/tasks/` + task.id, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(() => {
+                        getData(); // Met à jour l'affichage des tâches après la suppression
+                    });
                 });
-
-                taskList.appendChild(taskItem);
             });
         });
     }
@@ -140,6 +151,8 @@ function getData() {  // Crée une fonction getData qui récupère et affiche le
                 })
                 .catch(error => {
                     console.error('Error creating task:', error)
+                    localStorage.removeItem('token'); // Supprime le token en cas d'erreur de création de tâche
+                    window.location.href = '/index.html'; // Redirige vers la page de connexion en cas d'erreur de création de tâche
                 });
             });
         }
