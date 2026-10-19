@@ -31,5 +31,33 @@ data.forEach(projet => {
     a.textContent = 'Voir le projet';
     a.href = 'project.html?id=' + projet.id;
     projectCard.appendChild(a);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.textContent = 'Supprimer';
+    projectCard.appendChild(deleteButton);
+
+    deleteButton.addEventListener('click', function() {
+    if (!confirm('Supprimer ce projet ?')) {
+        return;   // l'utilisateur a annulé
+    }
+
+    fetch('http://localhost:3000/projects/' + projet.id, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            projectCard.remove();   // retire la carte de la page
+        } else {
+            console.error('Suppression refusée :', response.status);
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err);
+    });
+});
     });
 });

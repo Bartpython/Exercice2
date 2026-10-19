@@ -139,7 +139,7 @@ button {
   color: white;
   border: none;
   border-radius: 10px;
-  padding: 0.95rem 1rem;
+  padding: 4px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform .05s;
@@ -147,6 +147,13 @@ button {
 
 button:hover { background: var(--primary-600); }
 button:active { transform: translateY(1px); }
+
+.project-card .delete-button {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 .auth-image { display: none; }
 
