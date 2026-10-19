@@ -21,6 +21,8 @@ function getData() {  // Crée une fonction getData qui récupère et affiche le
     .then(response => response.json())
     .then(project => {
         console.log(project);
+        taskList.innerHTML = ''; // Vide la liste des tâches avant de les recharger
+
         if (project.error) {
             console.error(project.error);
         } else {
@@ -103,12 +105,19 @@ function getData() {  // Crée une fonction getData qui récupère et affiche le
             .then(response => response.json())
             .then(createdTask => {
                 console.log('Task created:', createdTask);
+                
+                taskTitle.value = '';
+                taskDescription.value = '';  // Réinitialise les champs du formulaire
+                taskStatus.value = 'à faire';
+                getData(); // Met à jour l'affichage des tâches après la création d'une nouvelle tâche
             })
             .catch(error => {
-                console.error('Error creating task:', error);
+                console.error('Error creating task:', error)
             });
         });
     }
 
+
     getData(); // Appel de la fonction getData pour récupérer les données du projet et des tâches
+
     createTask(); // Appel de la fonction createTask pour gérer la création des tâches
