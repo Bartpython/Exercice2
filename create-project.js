@@ -6,6 +6,11 @@ const error = document.querySelector('#error');
 projectForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
+    if (projectnameInput.value.length < 4) {
+        error.textContent = 'Le nom du projet doit comporter au moins 4 caractères.';
+        return;
+    }
+
     fetch('http://localhost:3000/projects', {
         method: 'POST',
         headers: {
